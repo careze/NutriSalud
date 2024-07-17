@@ -1,0 +1,56 @@
+{% extends './BaseCrud.html' %}
+{% load static %}
+
+{% block body %}
+<div class="container-fluid">
+    <h1>Lista de Productos y Menús NutriSalud</h1>
+    <a href="{% url 'crear_crud' %}" class="btn btn-primary mt-5">Crear Nuevo Producto o menu</a>
+    <table class="table table-striped mt-5">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for elemento in elementos %}
+                <tr>
+                    <td>{{ elemento.obj.id }}</td>
+                    <td>
+                        {% if elemento.tipo == 'Producto' %}
+                            {{ elemento.obj.nombreProducto }}
+                        {% else %}
+                            {{ elemento.obj.nombreMenu }}
+                        {% endif %}
+                    </td>
+                    <td>{{ elemento.tipo }}</td> 
+                    <td>{{ elemento.obj.precio }}</td>
+                    <td>
+                        {% if elemento.tipo == 'Producto' %}
+                            {{ elemento.obj.marca }}
+                        {% else %}
+                            NS
+                        {% endif %}
+                    </td> 
+                    <td>{{ elemento.obj.stock }}</td>
+                    <td>{{ elemento.obj.descripcion }}</td>
+                    <td>
+                        <a href="{% url 'ver_crud' elemento.obj.id  %}" class="btn btn-warning btn-sm">Ver</a>
+                        <a href="{% url 'editar_crud' elemento.obj.id %}" class="btn btn-primary btn-sm">Editar</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="8">No hay productos guardados.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

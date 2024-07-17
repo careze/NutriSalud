@@ -1,0 +1,36 @@
+{% extends './BaseCrud.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <a href="{% url 'cargar_inicio_crud' %}" class="btn btn-primary mt-3">Volver atras</a>
+    <div class="row mt-3 mb-3">
+        <div class="col-md-12 text-center">
+            <a href="?tipo=Producto" class="btn btn-success">Registrar Producto</a>
+            <a href="?tipo=Menu" class="btn btn-info">Registrar Menú</a>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="card-title">
+                        <i class="fas fa-plus"></i> Registrar {{ tipo|capfirst }}</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

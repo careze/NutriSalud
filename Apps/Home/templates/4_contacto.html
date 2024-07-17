@@ -1,0 +1,38 @@
+{% extends '0_base.html' %}
+{% load static %}
+
+{% block body %}
+
+<div class="container-fluid mx-5 px-5 ">
+    <h1 class="text-center display-6 mb-5 fw-bold my-5">Contáctenos</h1>
+    <!-- targeta Juana-->
+    <div class="row mb-5 justify-content-center">
+        <div class="col-md-4 col-12 mb-3">
+            <div class="card card-contacto shadow">
+                <img src="{% static 'img/Katy_nutricionistaa.jpg' %}" class="card-img-top" alt="Profesional">
+                <div class="card-body">
+                    <h2 class="card-title">Juana Salud</h2>
+                    <p><strong>Correo:</strong> NutriSalud@gmail.com</p>
+                    <p><strong>Especialidad:</strong> Nutricionista</p>
+                    <a href="https://wa.me/56912345678" target="_blank" class="btn btn-success mt-3">
+                        <i class="fab fa-whatsapp"></i> Chatea en WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--targeta IA -->
+        <div class="col-md-4 col-12 mb-3">
+            <div class="card card-contacto shadow">
+                <img src="{% static 'img/nutribot.jpg' %}" class="card-img-top" alt="Asistente Virtual">
+                <div class="card-body">
+                    <h2 class="card-title">Asistente Virtual</h2>
+                    <p class="card-text">Resuelve tus dudas con nuestro chat</p>
+                    <a href="{% url 'chat_view' %}" class="btn btn-primary mt-3">Iniciar Consulta</a>
+                </div>
+            </div>
+        </div>
+     </div>
+    </div>
+</div>
+
+{% endblock %}

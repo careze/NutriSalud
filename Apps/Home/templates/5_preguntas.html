@@ -1,0 +1,108 @@
+{% extends '0_base.html' %}
+{% load static %}
+{% block body %}
+ 
+<div class="container my-5">
+    <h1 class="text-center display-6 mb-5 fw-bold">¡Preguntas Frecuentes!</h1>
+    
+    <!-- Pregunta 1 -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <h5 class="mb-0">
+                <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#pregunta1" aria-expanded="true" aria-controls="pregunta1">
+                    ¿Como va a hacer el envio?
+                </button>
+            </h5>
+        </div>
+        <div id="pregunta1" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#accordion">
+            <div class="card-body">
+                 Nutri Salud ofrece un despacho de lunes a domingo en toda la region metropolitana y para regiones el servicio es de lunes a viernes. 
+            </div>
+        </div>
+    </div>
+    
+    <!--Pregunta 2 -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#pregunta2" aria-expanded="false" aria-controls="pregunta2">
+                    ¿Cuáles son los métodos de pago aceptados?
+                </button>
+            </h5>
+        </div>
+        <div id="pregunta2" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion">
+            <div class="card-body">
+                Aceptamos pagos con tarjeta de crédito, débito y PayPal.
+            </div>
+        </div>
+    </div>
+    
+    <!--Pregunta 3 -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#pregunta3" aria-expanded="false" aria-controls="pregunta3">
+                    ¿Cómo puedo realizar un cambio o devolución?
+                </button>
+            </h5>
+        </div>
+        <div id="pregunta3" class="collapse" aria-labelledby="headingThree" data-bs-parent="#accordion">
+            <div class="card-body">
+                Para las devoluciones es contactandonos por el correo NutriSalud@gmail.com.
+            </div>
+        </div>
+    </div>
+
+ <!--Pregunta 4 -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#pregunta4" aria-expanded="false" aria-controls="pregunta4">
+                    ¿Cómo me puedo registrar en la página ?
+                </button>
+            </h5>
+        </div>
+        <div id="pregunta4" class="collapse" aria-labelledby="headingThree" data-bs-parent="#accordion">
+            <div class="card-body">
+                Para registrarse el cliente debe ir a la pare superior derecha de la web y seleccionar la opcion inicio de seccion e ingresar los datos solicitados .
+            </div>
+        </div>
+    </div>
+
+    <!--Pregunta 5 -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#pregunta5" aria-expanded="false" aria-controls="pregunta5">
+                    ¿Cuáles son los beneficios de registrarse?
+                </button>
+            </h5>
+        </div>
+        <div id="pregunta5" class="collapse" aria-labelledby="headingThree" data-bs-parent="#accordion">
+            <div class="card-body">
+                Las personas registradas en NutriSalud recibirán periódicamente un correo informando las distintas ofertas personalizadas para cada uno de nuestros clientes.
+            </div>
+        </div>
+    </div>
+
+    <!--Pregunta 6 -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <h5 class="mb-0">
+                <a class="btn btn-link collapsed" data-bs-toggle="collapse" href="#pregunta6" aria-expanded="false" aria-controls="pregunta6">
+                    ¿Dónde puedo hacer sugerencias?
+                </a>
+            </h5>
+        </div>
+        <div id="pregunta6" class="collapse" aria-labelledby="headingThree" data-bs-parent="#accordion">
+            <div class="card-body">
+                <p class="mb-0">
+                    Para hacer sugerencias o preguntas 
+                    <a href="{% url 'formulario' %}" class="btn btn-primary mt-2">Haz clic aquí</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

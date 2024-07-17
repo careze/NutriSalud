@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es-cl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Logo pestaña -->
+    <link rel="icon" href="{% static 'img/logo.jpg' %}" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <!-- link CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Link awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {% block head %}
+
+    {% endblock %}
+    <title>Document</title>
+</head>
+<body>
+
+<!-- navbar -->
+<header>
+    <div class="container-fluid p-0">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-success py-3 py-lg-0 px-lg-5">
+            <a class="navbar-brand" href="/">
+                <img src="{% static 'img/logo.jpg' %}" alt="Logo" width="60" height="60" class="d-inline-block fs-1 align-text-center">
+                <span class="text-white">Nutri</span> <span class="text-info">Salud</span>
+            </a>
+            <a href="/" class="navbar-brand d-block d-lg-none">
+                <h1 class="m-0 display-5 text-capitalize font-italic text-white"><span class="text-primary">Nutri</span>Salud</h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'metrics' %}">Métricas</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+{% block body %}
+
+{% endblock %}
+
+<!-- Footer -->
+<footer class="footer-expand-lg bg-success text-white py-4 mt-4 ">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-4 mb-4">
+              <h1 class="mb-3 display-5 text-capitalize">
+                  <img src="{% static 'img/logo.jpg' %}" alt="Logo" width="55" height="55" class="d-inline-block align-text-center">
+                  <span class="text-white">Nutri</span> <span class="text-info">Salud</span>
+              </h1>
+              <p class="small">Aquí encontrarás todo lo que necesitas saber sobre salud y nutrición.</p>
+          </div>
+          <div class="col-md-4 mb-4">
+              <h5 class="text-info mb-3">Contáctenos</h5>
+              <div class="d-flex justify-content-start">
+                  <a class="btn btn-outline-light rounded-circle text-center mr-2" href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                  <a class="btn btn-outline-light rounded-circle text-center mr-2" href="https://es-es.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                  <a class="btn btn-outline-light rounded-circle text-center" href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+              </div>
+          </div>
+          <div class="col-md-4 mb-4">
+              <h5 class="text-info mb-3">Mapa de sitio</h5>
+              <div class="d-flex flex-column justify-content-start">
+                  <a class="text-white mb-1" href="/"><i class="fa fa-angle-right mr-1"></i>Inicio</a>
+                  <a class="text-white mb-1" href="/6_nosotros"><i class="fa fa-angle-right mr-1"></i>Quiénes Somos</a>
+                  <a class="text-white mb-1" href="/4_contacto"><i class="fa fa-angle-right mr-1"></i>Contacte con un profesional</a>
+              </div>
+          </div>
+      </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+<script src="{% static 'js/metrics.js' %}"></script> <!-- link para js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+{% block script %}
+
+{% endblock %}
+</body>
+</html>

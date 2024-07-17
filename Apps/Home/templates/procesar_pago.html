@@ -1,0 +1,81 @@
+{% extends '0_base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container container-custom">
+    <h1 class="title-custom">Procesar Pago</h1>
+    <div class="card card-custom">
+        <div class="card-body">
+            <h5 class="card-title card-title-custom">Método de Pago</h5>
+            <div id="paypal-button-container"></div>
+            <p id="result-message"></p>
+            <!-- SDK de PayPal -->
+            <script src="https://www.paypal.com/sdk/js?client-id=AU8_4PQzFd1OgmxwldRORCZ8AT8gilMLozlr635AF6VI9o_a-aj5jaJ69FRgvMP5mXireifOYNLKuWyQ&currency=USD&components=buttons"></script>
+            <script>
+                paypal.Buttons({
+                    createOrder: function(data, actions) {
+                        return actions.order.create({
+                            purchase_units: [{
+                                amount: { value: '{{ total|floatformat:0 }}' }
+                            }]
+                        });
+                    },
+                    onApprove: function(data, actions) {
+                        return actions.order.capture().then(function(details) {
+                            return fetch("{% url 'confirmar_pago' %}", {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRFToken': '{{ csrf_token }}'
+                                },
+                                body: JSON.stringify({
+                                    orderID: data.orderID
+                                })
+                            }).then(function(response) {
+                                if (response.ok) {
+                                    showSuccessMessage();
+                                } else {
+                                    response.json().then(function(data) {
+                                        console.error('Error al confirmar el pago:', data);
+                                        alert('Error al confirmar el pago: ' + data.status);
+                                    });
+                                }
+                            }).catch(function(error) {
+                                console.error('Error al confirmar el pago:', error);
+                                alert('Error al confirmar el pago: ' + error.message);
+                            });
+                        });
+                    }
+                }).render('#paypal-button-container');
+
+                function showSuccessMessage() {
+                    let successModal = document.createElement('div');
+                    successModal.innerHTML = `
+                        <div class="modal modal-custom">
+                            <div class="modal-dialog modal-dialog-custom">
+                                <div class="modal-content">
+                                    <div class="modal-header modal-header-custom">
+                                        <h5 class="modal-title modal-title-custom">Compra Exitosa</h5>
+                                        <button type="button" class="btn-close btn-close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body modal-body-custom">
+                                        <p>Su compra ha sido realizada con éxito. Gracias por su preferencia. Aun no te vayas, te invitamos a seguir interactuando con nosotros.</p>
+                                    </div>
+                                    <div class="modal-footer modal-footer-custom">
+                                        <button type="button" class="btn btn-primary btn-primary-custom" onclick="window.location.href='/'">Ir al Inicio</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    document.body.appendChild(successModal);
+                }
+            </script>
+        </div>
+    </div>
+</div>
+{% endblock %}

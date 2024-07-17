@@ -1,0 +1,23 @@
+{% extends 'BaseCrud.html' %}
+{% load static %}
+
+{% block body %}
+    <meta charset="UTF-8">
+    <title>Métricas de Usuarios</title>
+
+    <!--Biblioteca de Google Charts -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="application/json" id="categoryCounts">{{ category_counts|safe }}</script>
+    <script type="application/json" id="ageDistribution">{{ age_distribution|safe }}</script>
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Métricas de Usuarios</h3>
+            </div>
+            <div class="card-body">
+                <div id="graficoCategorias" style="width: 100%; height: 400px;"></div>
+                <div id="graficoEdades" style="width: 100%; height: 400px;"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

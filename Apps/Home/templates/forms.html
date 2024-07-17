@@ -1,0 +1,27 @@
+{% extends '0_base.html' %}
+
+{% block body %}
+<div class="custom-form-container">
+    <h5>Ingresa tu información y comentarios</h5>
+    <form action="https://formspree.io/f/myzgyejb" method="POST">
+        <div class="form-group">
+            <label for="nameInput">Nombre:</label>
+            <input type="text" class="form-control" id="nameInput" name="nombre" required>
+        </div>
+        <div class="form-group">
+            <label for="emailInput">Correo electrónico:</label>
+            <input type="email" class="form-control" id="emailInput" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="categorySelect">Tipo de Comentario:</label>
+            <input type="tipo" class="form-control" id="categorySelect" name="tipo" required>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="commentsInput">Comentarios:</label>
+            <textarea class="form-control" id="commentsInput" name="comentarios" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>
+{% endblock %}

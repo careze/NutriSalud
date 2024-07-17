@@ -1,0 +1,291 @@
+.text-verde {
+    color: #009688; 
+}
+
+.divider {
+    border-right: 1px solid white;
+    margin: 0 10px;
+    height: 40px; 
+  }
+
+
+/* Estilos para el carrusel */
+.carousel {
+    width: 60%; 
+    margin: auto; 
+}
+
+
+.carousel-item img {
+    border-radius: 10px; 
+    object-fit: cover; 
+    height: 300px; 
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5); 
+    border-radius: 10px; 
+    color: white; 
+    text-align: center;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    width: 5%; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    background-color: rgba(0, 0, 0, 0.5); 
+    border-radius: 50%; 
+    color: white; 
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: transparent; 
+    border: none; 
+    outline: none; 
+    width: 30px; 
+    height: 30px; 
+}
+
+
+
+
+/* servicios */
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(200, 245, 255, 0.8);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    padding: 20px;
+    pointer-events: none;
+}
+
+.card:hover .card-overlay {
+    opacity: 1;
+}
+
+.card-deck{
+    margin-bottom: auto;
+}
+
+.card-body2 {
+    height: 50px; 
+    overflow: hidden; 
+}
+
+.card-img-top2 {
+    object-fit: flex; 
+    height: 230px;
+}
+
+/* Fondo de la página */
+body {
+    background-image: url('/static/img/Fondo.webp'); 
+    background-size: cover;         
+    background-repeat: no-repeat;    
+    background-attachment: fixed;    
+    background-position: center;     
+    margin: 0;                 
+}
+/* Corazon */
+
+.btn-like {
+    background-color: rgba(216, 27, 27, 0.959);
+    color: white;
+    border: none;
+  }
+  
+.btn-like .fas.fa-heart {
+    color: white;
+}
+
+.card-img-top {
+    height: 300px; 
+    object-fit: cover;
+}
+/* cartas producto-menu */
+
+.card-body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title, .card-text {
+    flex-grow: 0; 
+    margin-bottom: 0.5rem; 
+}
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; 
+}
+
+.card-img-top {
+    flex: 2; 
+    object-fit: cover;
+    height: auto; 
+}
+
+/* cartas chat */
+
+.card-contacto {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-contacto .card-img-contacto {
+    flex: 2; 
+    object-fit: cover;
+    height: auto; 
+}
+
+.card-contacto .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-contacto .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+
+
+/*chat? */
+#chat-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#chat-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    height: 150px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#user-input {
+    flex-shrink: 0;
+}
+
+
+
+.user-info {
+    position: fixed;
+    top: 80px; 
+    left: -260px; 
+    width: 250px;
+    height: auto;
+    background: linear-gradient(135deg, #22e2b89d, #05ff9796); 
+    border: 1px solid #000000;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease; 
+    z-index: 1000;
+}
+
+.user-info label.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #888888;
+}
+
+.user-info label.close-button:hover {
+    color: #555555;
+}
+
+.show-info-checkbox {
+    display: none; 
+}
+
+.show-info-checkbox:checked ~ .user-info {
+    left: 0; 
+}
+.toggle-button {
+    position: fixed;
+    top: 20px;
+    left: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #007bff; 
+    z-index: 1001; 
+    background-color: #ffffff; 
+    padding: 5px 10px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+.toggle-button:hover {
+    background-color: #007bff; 
+    color: #ffffff;
+}
+
+.welcome-message {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.user-details {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.user-details li {
+    margin-bottom: 8px;
+    color: #000000; 
+}
+
+.user-details li strong {
+    margin-right: 5px;
+    font-weight: bold;
+    color: #000000; 
+}
+
+
+/*footer */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+}
+
+.footer {
+    background-color: #198754;
+    color: white;
+    padding: 20px 0;
+}
+
+#conversation {
+    height: 200px; 
+    border: 1px solid #000;
+    margin-bottom: 10px;
+    overflow-y: scroll;
+    background-color: #424755;
+    padding: 10px;
+}
+
+

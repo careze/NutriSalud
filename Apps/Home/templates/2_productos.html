@@ -1,0 +1,46 @@
+{% extends '0_base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/productos_estilos.css' %}">
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1 class="text-center display-6 mb-5 fw-bold my-5">Productos</h1>
+    <!-- Filtro de productos -->
+    <div class="row mb-4">
+        <form method="GET" id="form-busqueda">
+            <div class="input-group">
+                <input type="text" class="form-control" id="inputBusqueda" name="busqueda" placeholder="Buscar producto...">
+                <button class="btn btn-primary" type="submit">Buscar</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Lista de productos -->
+    <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+        {% for producto in productos %}
+        <div class="col">
+            <div class="card h-100 productos-card">
+                <img src="{{ producto.foto.url }}" class="card-img-top productos-img" alt="{{ producto.nombreProducto }}">
+                <div class="card-body productos-body">
+                    <h2 class="card-title">{{ producto.nombreProducto }}</h2>
+                    <p class="card-text">{{ producto.descripcion }}</p>
+                </div>
+                <div class="card-footer productos-footer">
+                    <small class="text-muted">${{ producto.precio|floatformat:0 }}</small>
+                    <form method="post" action="{% url 'agregar_al_carro' producto.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="cantidad" value="1">
+                        <button type="submit" class="btn btn-primary">Agregar al Carrito</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

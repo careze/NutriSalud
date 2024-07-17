@@ -1,0 +1,75 @@
+{% extends '0_base.html' %}
+{% load static %}
+
+{% block body %}
+<div class="container my-5">
+    <h1 class="text-center display-6 mb-5 fw-bold my-5">Carro de Compras</h1>
+    <!-- Carrito -->
+    <div class="row mb-4">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Productos en el Carro</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        {% for item in productos %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center mb-2">
+                            <div>
+                                <h6 class="mb-1">{{ item.nombre }}</h6>
+                                <div class="d-flex align-items-center">
+                                    <span class="badge bg-primary rounded-pill me-2 fs-7">Cantidad: {{ item.cantidad }}</span>
+                                    <form method="post" action="{% url 'actualizar_carro' item.producto.id %}" class="d-flex align-items-center">
+                                        {% csrf_token %}
+                                        <input type="number" name="cantidad" value="{{ item.cantidad }}" min="1" class="form-control form-control-sm w-auto me-2">
+                                        <button type="submit" class="btn btn-primary btn-sm">Actualizar</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <span class="badge bg-primary rounded-pill mb-2 fs-6 price-font">${{ item.subtotal }}</span>
+                                <form action="{% url 'eliminar_del_carro' item.producto.id %}" method="post" class="d-inline">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-outline-danger btn-sm ms-2">Eliminar</button>
+                                </form>
+                            </div>
+                        </li>
+                        {% empty %}
+                        <li class="list-group-item">
+                            No hay productos en el carro.
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Total y botón para proceder al pago -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <strong>Total</strong>
+                            <span class="badge bg-success rounded-pill fs-6 price-font">${{ total|floatformat:0 }}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Método de Pago</h5>
+                    <form method="post" action="{% url 'verificar_stock' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary w-100">Proceder al Pago</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends './0_base.html' %}
+{% load static %}
+
+{% block body %}
+<div class="container mt-4 mb-5">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0"><i class="fas fa-user-plus"></i> Registro</h2>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {% if form.errors %}
+                    <div class="alert alert-danger mt-3">
+                        <ul class="mb-0">
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+                <button type="submit" class="btn btn-primary mt-3 w-100">
+                    <i class="fas fa-user-plus"></i> Registrarse
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
